@@ -278,7 +278,7 @@ public int callResume = 0;
 
     @Override
     protected void onResume() {
-        // TODO Auto-generated method stub
+     
         super.onResume();
 
         callResume++;
