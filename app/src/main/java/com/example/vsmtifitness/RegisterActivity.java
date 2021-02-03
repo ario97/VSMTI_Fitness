@@ -147,52 +147,45 @@ Log.i(username, "nest3333333333333333333333333");
             toast.show();
             return;
         }
-
-
-
-        if (age.getText().toString().equals("")) {
+        else if (age.getText().toString().equals("")) {
             toast = Toast.makeText(this, "Must set an age...", Toast.LENGTH_SHORT);
             toast.show();
             return;
         }
-
-        if (password.getText().toString().equals("")){
+        else if (password.getText().toString().equals("")){
             toast = Toast.makeText(this, "Must set a password...", Toast.LENGTH_SHORT);
             toast.show();
             return;
         }
-
-
-        if (email.getText().toString().equals("")){
+        else  if (email.getText().toString().equals("")){
             toast = Toast.makeText(this, "Must set an email...", Toast.LENGTH_SHORT);
             toast.show();
             return;
         }
-
-        if (!isValidEmail(email.getText().toString())){
+        else if (!isValidEmail(email.getText().toString())){
             toast = Toast.makeText(this, "Incorrect email format...", Toast.LENGTH_SHORT);
             toast.show();
             return;
         }
-
-
-        if (phone.getText().toString().equals("")){
+        else if (phone.getText().toString().equals("")){
             toast = Toast.makeText(this, "Must set a phone number...", Toast.LENGTH_SHORT);
             toast.show();
             return;
         }
-
-
-        if (weight.getText().toString().equals("")){
+        else if (weight.getText().toString().equals("")){
             toast = Toast.makeText(this, "Must set a weight...", Toast.LENGTH_SHORT);
             toast.show();
             return;
         }
-
-        if (height.getText().toString().equals("")){
+        else if (height.getText().toString().equals("")){
             toast = Toast.makeText(this, "Must set a height...", Toast.LENGTH_SHORT);
             toast.show();
             return;
+        }
+        else{
+            toast = Toast.makeText(this, "Registration successful!", Toast.LENGTH_SHORT);
+            toast.show();
+
         }
 
 

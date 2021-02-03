@@ -31,6 +31,9 @@ public class WorkoutListFragment extends ListFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
 
         WorkoutData.workouts = WorkoutData.getWorkouts();
+
+
+
       WorkoutActivity activity = (WorkoutActivity) getActivity();
       int value_user_id = activity.getData();
 
@@ -49,6 +52,7 @@ public class WorkoutListFragment extends ListFragment {
 
 
         }
+        /*
             String[] names = new String[counter];
             int counter2 = 0;
             for (int i2 = 0; i2 < namesCount.length; i2++){
@@ -58,13 +62,24 @@ counter2++;
                 }
 
         }
+*/
+        WorkoutData[] names = new WorkoutData[counter];
+        int counter2 = 0;
+        for (int i2 = 0; i2 < namesCount.length; i2++){
+            if(WorkoutData.workouts.get(i2).getUser_id() == 0 || WorkoutData.workouts.get(i2).getUser_id() == value_user_id) {
+                names[counter2] = WorkoutData.workouts.get(i2);
+                counter2++;
+            }
+        }
 
 
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(
+
+
+        ArrayAdapter<WorkoutData> adapter = new ArrayAdapter<WorkoutData>(
                 inflater.getContext(), android.R.layout.simple_list_item_1, names);
         setListAdapter(adapter);
-        WorkoutData.workouts = WorkoutData.getWorkouts();
+
         return super.onCreateView(inflater, container, savedInstanceState);
     }
 

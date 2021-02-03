@@ -56,6 +56,8 @@ public class WorkoutActivity extends AppCompatActivity implements WorkoutListFra
     }
 
 
+
+
     public void addWorkout(View view){
         Log.d(TAG, "add workout pressed");
         Intent intent = new Intent(this, AddWorkoutActivity.class);

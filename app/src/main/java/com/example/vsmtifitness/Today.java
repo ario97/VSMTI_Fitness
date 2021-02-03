@@ -74,11 +74,11 @@ public class Today extends Fragment {
         selectedPlan = activity.dBhandler.returnMealPlan(name);
         mealPlan.setText(String.valueOf(selectedPlan));
 
-        needCals.setText(String.format("%.0f", MainActivity.user.getCal_needs() - selectedPlan));
-        float calorieCounter = 0;
-        ((MainActivity) getActivity()).messageDaily = MainActivity.user.getCal_needs() +  calorieCounter ;
+        needCals.setText(String.format("%.0f", MainActivity.user.getCal_needs() ));
+
+        ((MainActivity) getActivity()).messageDaily = MainActivity.user.getCal_needs()  - selectedPlan;
         if (workoutIDs != null) {
-             calorieCounter = 0;
+            float calorieCounter = 0;
             List<String> items = new ArrayList<String>();
             final List<workoutDetail> items2 = new ArrayList<workoutDetail>();
             workoutDetail works;
@@ -148,7 +148,7 @@ public class Today extends Fragment {
             else dailyCals.setTextColor(Color.RED);
 
 
-            ((MainActivity) getActivity()).messageDaily = MainActivity.user.getCal_needs() +  calorieCounter ;
+            ((MainActivity) getActivity()).messageDaily = MainActivity.user.getCal_needs() +  calorieCounter  ;
 
 
             ArrayAdapter<String> itemsAdapter =

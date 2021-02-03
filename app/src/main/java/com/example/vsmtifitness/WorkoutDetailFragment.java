@@ -3,6 +3,7 @@ package com.example.vsmtifitness;
 
 import android.app.Fragment;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -36,11 +37,36 @@ public class WorkoutDetailFragment extends Fragment {
         View view = getView();
         if (view != null) {
             TextView title = (TextView) view.findViewById(R.id.textTitle);
-            WorkoutData workout = WorkoutData.workouts.get(workoutId);
+
+
+
+            WorkoutActivity activity = (WorkoutActivity) getActivity();
+            int value_user_id = activity.getData();
+
+
+            Log.i(String.valueOf(value_user_id), "today button hit...");
+            String[] namesCount = new String[WorkoutData.workouts.size()];
+            int counter = 0;
+            for (int i = 0; i < namesCount.length; i++) {
+                if (WorkoutData.workouts.get(i).getUser_id() == 0 || WorkoutData.workouts.get(i).getUser_id() == value_user_id) {
+                    counter++;
+                }
+            }
+            WorkoutData[] names = new WorkoutData[counter];
+            int counter2 = 0;
+            for (int i2 = 0; i2 < namesCount.length; i2++){
+                if(WorkoutData.workouts.get(i2).getUser_id() == 0 || WorkoutData.workouts.get(i2).getUser_id() == value_user_id) {
+                    names[counter2] = WorkoutData.workouts.get(i2);
+                    counter2++;
+                }
+            }
+
+
+            WorkoutData workout = names[workoutId];
             title.setText(workout.getName());
             TextView description = (TextView) view.findViewById(R.id.textDescription);
             description.setText(workout.getDescription());
-            WorkoutActivity.workoutIDSelected = WorkoutData.workouts.get(workoutId).getID();
+            WorkoutActivity.workoutIDSelected = names[workoutId].getID();
             WorkoutActivity.workoutPosition = workoutId;
         }
     }

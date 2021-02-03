@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity
     // dohvati objekt za rukovanje bazom podataka
     static DBhandler dBhandler;
 
-
+public int callResume = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -132,6 +132,9 @@ public class MainActivity extends AppCompatActivity
             super.onBackPressed();
         }
     }
+
+
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -271,6 +274,23 @@ public class MainActivity extends AppCompatActivity
         ft.replace(R.id.mainFrame, todayFrag).addToBackStack(null).commit();
         fragmentManager.executePendingTransactions();
     }
+
+
+    @Override
+    protected void onResume() {
+        // TODO Auto-generated method stub
+        super.onResume();
+
+        callResume++;
+        if(callResume > 1)
+        {
+            Intent newInt = new Intent(getIntent());
+            startActivity(newInt);
+            this.finish();
+            startActivity(newInt);
+        }
+    }
+
 
 
 
