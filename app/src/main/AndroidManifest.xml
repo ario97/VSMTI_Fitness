@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+package="com.example.vsmtifitness">
+
+<application
+    android:allowBackup="true"
+    android:icon="@mipmap/ic_launcher"
+    android:label="@string/app_name"
+    android:supportsRtl="true"
+    android:theme="@style/AppTheme">
+    <activity
+        android:name=".MainActivity"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme.NoActionBar">
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+    </activity>
+    <activity
+        android:name=".LogIn"
+        android:label="Log In"
+        android:parentActivityName=".MainActivity">
+        <meta-data
+            android:name="android.support.PARENT_ACTIVITY"
+            android:value=".MainActivity" />
+    </activity>
+    <activity
+        android:name=".WorkoutActivity"
+        android:label="@string/title_activity_workout"
+        android:parentActivityName=".MainActivity"
+        android:theme="@style/AppTheme.NoActionBar">
+
+        <!-- The meta-data element is needed for versions lower than 4.1 -->
+        <meta-data
+            android:name="android.support.PARENT_ACTIVITY"
+            android:value=".MainActivity" />
+    </activity>
+    <activity
+        android:name=".BmiCalculator"
+        android:label="BMI"
+        android:parentActivityName=".MainActivity"
+        android:theme="@style/AppTheme.NoActionBar">
+        <meta-data
+            android:name="android.support.PARENT_ACTIVITY"
+            android:value=".MainActivity" />
+    </activity>
+    <activity
+        android:name=".AddWorkoutActivity"
+        android:label="@string/title_activity_add_workout"
+        android:parentActivityName=".WorkoutActivity"
+        android:theme="@style/AppTheme.NoActionBar">
+        <meta-data
+            android:name="android.support.PARENT_ACTIVITY"
+            android:value="com.example.vsmtifitness.WorkoutActivity" />
+    </activity>
+    <activity
+        android:name=".RegisterActivity"
+        android:label="@string/title_activity_register"
+        android:parentActivityName=".LogIn"
+        android:theme="@style/AppTheme.NoActionBar">
+        <meta-data
+            android:name="android.support.PARENT_ACTIVITY"
+            android:value="com.example.vsmtifitness.LogIn" />
+    </activity>
+</application>
+
+</manifest>

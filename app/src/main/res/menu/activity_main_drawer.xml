@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item android:id="@+id/my_fitness" android:icon="@drawable/run"
+            android:title="@string/my_fitness" />
+        <item android:id="@+id/today" android:icon="@drawable/clipbrd"
+            android:title="@string/today" />
+        <item android:id="@+id/workouts" android:icon="@drawable/barbell"
+            android:title="@string/workouts" />
+        <item android:id="@+id/recipies" android:icon="@drawable/tape"
+            android:title="@string/recipies" />
+        <item android:id="@+id/BMI" android:icon="@drawable/run"
+            android:title="@string/bmi" />
+    </group>
+
+
+</menu>

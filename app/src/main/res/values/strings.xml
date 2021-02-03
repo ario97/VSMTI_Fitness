@@ -1,0 +1,104 @@
+<resources>
+    <string name="app_name">Fitness Tracker</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="action_settings">Settings</string>
+    <string name="LogIn">Log In</string>
+    <string name="title_activity_workout">Workout List</string>
+    <string name="title_activity_add_workout">Add Workout</string>
+    <string name="title_activity_register">RegisterActivity</string>
+    <string name="bmi">BMI</string>
+    <string name="weight_kg">Weight (kg) :</string>
+    <string name="height_cm">Height (cm) :</string>
+    <string name="calculate">Calculate</string>
+    <string name="add_nworkout">Add\nWorkout</string>
+    <string name="delete_nworkout">Delete\nWorkout</string>
+    <string name="schedule_nworkout">Schedule\nWorkout</string>
+    <string name="workout_name">Workout Name</string>
+    <string name="workout_description">Workout Description</string>
+    <string name="calorie_calculation_method">Calorie Calculation Method</string>
+    <string name="total_calorie_count">Total Calorie Count</string>
+    <string name="per_kilo_calorie_count">Per Kilo Calorie Count</string>
+    <string name="enter_amount">Enter Amount</string>
+    <string name="add_workout">Add Workout</string>
+    <string name="username">Username:</string>
+    <string name="age">AGE:</string>
+    <string name="password">Password</string>
+    <string name="email">Email:</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="weight_kgr">Weight (kg)</string>
+    <string name="height_cmr">Height (cm)</string>
+    <string name="bmir">BMI:</string>
+    <string name="bmr">BMR:</string>
+    <string name="calculater">Calculate</string>
+    <string name="register">Register</string>
+    <string name="welcome">Welcome</string>
+    <string name="name">Name</string>
+    <string name="starting_weight">Starting Weight:</string>
+    <string name="current_weight">Current Weight:</string>
+    <string name="_100">100</string>
+    <string name="kg">kg</string>
+
+
+    <string name="bmis">BMI:</string>
+
+
+    <string name="bmrs">BMR</string>
+    <string name="calorie_loss_today">Calorie loss today:</string>
+    <string name="calories">Calories</string>
+    <string name="total_kilos_lost">Total kilos Lost</string>
+    <string name="_000">000</string>
+
+    <string name="recipies">Recipies</string>
+    <string name="_1000">1000</string>
+    <string name="calories_list">Calories List</string>
+    <string name="_1200">1200</string>
+    <string name="_1500">1500</string>
+    <string name="_1800">1800</string>
+    <string name="choose_plan">Choose plan</string>
+    <string name="weight">Weight:</string>
+    <string name="_00_00_00">00/00/00</string>
+    <string name="_000_00">000.00</string>
+    <string name="change">Change</string>
+    <string name="total_calories_lost_today">Total Calories Lost Today:</string>
+
+    <string name="meal_plan">Meal plan:</string>
+
+    <string name="calories_expenditure">Calories Expenditure:</string>
+    <string name="add_a_workout">Add A workout</string>
+    <string name="_00000">00000</string>
+    <string name="click_a_workout_to_see_details_or_remove">Click a workout to see details or remove...</string>
+    <string name="scheduled_calories">Scheduled Calories:</string>
+
+
+
+
+    <string name="daily_calories">Daily Calories:</string>
+
+
+
+
+    <string name="user_name">User Name:</string>
+    <string name="enter_the_user_name">Enter the user name</string>
+    <string name="passwordl">Password:</string>
+    <string name="enter_your_password">Enter your password</string>
+    <string name="login">Login</string>
+
+
+
+
+
+
+
+    <string name="vsmti_fitness_tracker_app">VSMTI Fitness tracker App</string>
+    <string name="mario_brbot">Mario Brbot</string>
+    <string name="my_fitness">My Fitness</string>
+    <string name="today">Today</string>
+    <string name="workouts">Workouts</string>
+
+
+    <string name="logout">Logout</string>
+
+
+</resources>

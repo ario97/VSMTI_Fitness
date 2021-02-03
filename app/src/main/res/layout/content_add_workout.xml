@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="@color/background"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.example.vsmtifitness.AddWorkoutActivity"
+    tools:showIn="@layout/activity_add_workout">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="@string/workout_name"
+                android:id="@+id/workoutNameText"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentStart="true" />
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/workoutNameEditText"
+                android:layout_below="@+id/workoutNameText"
+                android:layout_alignParentStart="true"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:layout_alignParentEnd="true"
+                android:maxLines="1"
+                android:maxLength="25"
+                android:singleLine="true" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="@string/workout_description"
+                android:id="@+id/workoutDescriptionText"
+                android:layout_below="@+id/workoutNameEditText"
+                android:layout_alignParentStart="true" />
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="100dp"
+                android:id="@+id/workOutEditText"
+                android:layout_below="@+id/workoutDescriptionText"
+                android:layout_alignParentStart="true"
+                android:layout_alignEnd="@+id/workoutNameEditText"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:maxLines="10"
+                android:maxLength="255"
+                android:hint="100 push-ups\n50 sit-ups\netc..." />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="@string/calorie_calculation_method"
+                android:id="@+id/calorieCalcText"
+                android:layout_below="@+id/workOutEditText"
+                android:layout_alignParentStart="true" />
+
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/calorieCalcText"
+                android:layout_alignParentStart="true"
+                android:orientation="vertical"
+                android:id="@+id/CalorieRadioGroup">
+
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/total_calorie_count"
+                    android:id="@+id/totalCalorieSelected"
+                    android:checked="true" />
+
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/per_kilo_calorie_count"
+                    android:id="@+id/perKiloSelected"
+                    android:checked="false" />
+            </RadioGroup>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="@string/enter_amount"
+                android:id="@+id/calorieEnterText"
+                android:layout_below="@+id/CalorieRadioGroup"
+                android:layout_alignParentStart="true" />
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:inputType="numberDecimal"
+                android:ems="10"
+                android:id="@+id/calAmountEditText"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:singleLine="true"
+                android:layout_below="@+id/calorieEnterText"
+                android:layout_alignEnd="@+id/calorieEnterText"
+                android:maxLength="5"
+                android:hint="0.0" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/add_workout"
+                android:id="@+id/addWorkoutButton"
+                android:layout_marginTop="45dp"
+                android:layout_below="@+id/calAmountEditText"
+                android:layout_alignParentStart="true"
+                android:onClick="addWorkoutClicked" />
+
+        </RelativeLayout>
+
+    </ScrollView>
+
+
+</RelativeLayout>

@@ -1,0 +1,158 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" tools:context="com.example.vsmtifitness.Today">
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background">
+
+    <TextView
+        android:id="@+id/date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/_00_00_00"
+        android:textSize="30sp"
+        android:layout_gravity="center_horizontal|top"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <View
+        android:layout_below="@+id/date"
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:background="#9c9c9c"
+        android:id="@+id/line"
+        android:layout_marginTop="3dp"
+        android:layout_marginBottom="3dp" />
+
+    <TextView
+        android:layout_below="@+id/line"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/weight"
+        android:id="@+id/textWeight"
+        android:layout_alignTop="@+id/weight"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/_000_00"
+        android:id="@+id/weight"
+        android:layout_marginLeft="10dp"
+        android:layout_below="@+id/line"
+        android:layout_toEndOf="@+id/textWeight" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/change"
+        android:id="@+id/changeWeightButton"
+        android:layout_below="@+id/line"
+        android:layout_toEndOf="@+id/weight"
+        android:layout_alignBottom="@+id/weight"
+        android:textSize="8sp"
+        android:layout_marginLeft="5dp"
+        android:onClick="changeWeight"/>
+      />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/total_calories_lost_today"
+        android:id="@+id/textDailyCalories"
+        android:layout_below="@+id/textWeight"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/_000_00"
+        android:id="@+id/DailyCaloriesText"
+        android:layout_marginLeft="10dp"
+        android:layout_below="@+id/weight"
+        android:layout_toEndOf="@+id/textDailyCalories" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/meal_plan"
+        android:id="@+id/currentPlan"
+        android:layout_below="@+id/textDailyCalories"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/_000_00"
+        android:id="@+id/currentPlanText"
+        android:layout_marginLeft="10dp"
+        android:layout_below="@+id/DailyCaloriesText"
+        android:layout_toEndOf="@+id/currentPlan" />
+
+
+    <View
+        android:layout_below="@+id/currentPlan"
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:background="#9c9c9c"
+        android:id="@+id/line2"
+        android:layout_marginTop="3dp"
+        android:layout_marginBottom="3dp" />
+
+    <TextView
+        android:id="@+id/textSchedCalories"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/line2"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="-2dp"
+        android:layout_marginTop="3dp"
+        android:layout_marginEnd="2dp"
+        android:text="@string/calories_expenditure"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <ListView
+        android:layout_width="wrap_content"
+        android:layout_height="200dp"
+        android:id="@+id/workList"
+        android:layout_below="@+id/textSchedCalories"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="20dp" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/add_a_workout"
+        android:id="@+id/addWorkoutButton"
+        android:layout_below="@+id/workList"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/_00000"
+        android:id="@+id/calorieDisplay"
+        android:layout_alignTop="@+id/textSchedCalories"
+        android:layout_toEndOf="@+id/textDailyCalories"
+        android:layout_marginLeft="10dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="@string/click_a_workout_to_see_details_or_remove"
+        android:id="@+id/textView11"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true" />
+
+</RelativeLayout>
+</FrameLayout>
