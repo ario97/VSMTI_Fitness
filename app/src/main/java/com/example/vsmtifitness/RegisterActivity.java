@@ -183,6 +183,7 @@ Log.i(username, "nest3333333333333333333333333");
             return;
         }
         else{
+            calculate(view);
             toast = Toast.makeText(this, "Registration successful!", Toast.LENGTH_SHORT);
             toast.show();
 

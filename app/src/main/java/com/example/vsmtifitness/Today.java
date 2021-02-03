@@ -71,12 +71,7 @@ public class Today extends Fragment {
         String name = activity.sharedPreferences.getString("name", null);
 
         final int workoutIDs[] = DBhandler.returnTodaysRecords(name, DateTime);
-        selectedPlan = activity.dBhandler.returnMealPlan(name);
-        mealPlan.setText(String.valueOf(selectedPlan));
 
-        needCals.setText(String.format("%.0f", MainActivity.user.getCal_needs() ));
-
-        ((MainActivity) getActivity()).messageDaily = MainActivity.user.getCal_needs()  - selectedPlan;
         if (workoutIDs != null) {
             float calorieCounter = 0;
             List<String> items = new ArrayList<String>();
@@ -100,6 +95,7 @@ public class Today extends Fragment {
                     }
                 }
             }
+
 
 
 
@@ -136,6 +132,7 @@ public class Today extends Fragment {
 
 
              */
+            selectedPlan = activity.dBhandler.returnMealPlan(name);
             mealPlan.setText(String.valueOf(selectedPlan));
 
 
@@ -183,6 +180,18 @@ public class Today extends Fragment {
                             }).show();
                 }
             });
+        }
+        else{
+
+            float calorieCounter = 0;
+
+            selectedPlan = activity.dBhandler.returnMealPlan(name);
+            mealPlan.setText(String.valueOf(selectedPlan));
+
+            needCals.setText(String.format("%.0f", MainActivity.user.getCal_needs()  + calorieCounter  - selectedPlan));
+
+            ((MainActivity) getActivity()).messageDaily = MainActivity.user.getCal_needs() +  calorieCounter  ;
+
         }
         addWorkout = (Button) getView().findViewById(R.id.addWorkoutButton);
         addWorkout.setOnClickListener(new View.OnClickListener() {

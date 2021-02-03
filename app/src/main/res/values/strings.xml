@@ -79,8 +79,8 @@
 
 
 
-    <string name="user_name">User Name:</string>
-    <string name="enter_the_user_name">Enter the user name</string>
+    <string name="user_name">Username:</string>
+    <string name="enter_the_user_name">Enter the username</string>
     <string name="passwordl">Password:</string>
     <string name="enter_your_password">Enter your password</string>
     <string name="login">Login</string>

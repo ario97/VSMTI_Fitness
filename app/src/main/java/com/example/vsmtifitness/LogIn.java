@@ -42,7 +42,7 @@ public class LogIn extends AppCompatActivity {
                 finish();
                 break;
             case (1):
-                Log.d(TAG, "User Name was not found");
+                Log.d(TAG, "Username was not found");
                 Toast toast = Toast.makeText(this, "User Name was not found", Toast.LENGTH_SHORT);
                 toast.show();
                 nameBad.setVisibility(View.VISIBLE);
