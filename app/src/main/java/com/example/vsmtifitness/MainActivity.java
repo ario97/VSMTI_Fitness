@@ -91,7 +91,7 @@ public int callResume = 0;
             Intent intent = new Intent(this, LogIn.class);
             startActivityForResult(intent, 0);
             FragmentTransaction ft = getFragmentManager().beginTransaction();
-            ft.replace(R.id.mainFrame, todayFrag).addToBackStack(null).commit();
+            ft.replace(R.id.mainFrame, todayFrag).commit();
             fragmentManager.executePendingTransactions();
             Log.d(TAG, "no user data exists in shared prefs");
         }
@@ -109,7 +109,7 @@ public int callResume = 0;
                 ft.replace(R.id.mainFrame, fitnessFrag).addToBackStack(null).commit();
             }
             else {
-                ft.replace(R.id.mainFrame, todayFrag).addToBackStack(null).commit();
+                ft.replace(R.id.mainFrame, todayFrag).commit();
                 fragmentManager.executePendingTransactions();
             }
         }
@@ -130,6 +130,7 @@ public int callResume = 0;
             drawer.closeDrawer(GravityCompat.START);
         } else {
             super.onBackPressed();
+
         }
     }
 
@@ -169,7 +170,7 @@ public int callResume = 0;
 
             case R.id.today:
                 Log.i(TAG, "today button hit...");
-                ft.replace(R.id.mainFrame, todayFrag).addToBackStack(null).commit();
+                ft.replace(R.id.mainFrame, todayFrag).commit();
                 fragmentManager.executePendingTransactions();
                 break;
 
@@ -271,14 +272,14 @@ public int callResume = 0;
         FragmentTransaction ft = getFragmentManager().beginTransaction();
         todayFrag = null;
         todayFrag = new Today();
-        ft.replace(R.id.mainFrame, todayFrag).addToBackStack(null).commit();
+        ft.replace(R.id.mainFrame, todayFrag).commit();
         fragmentManager.executePendingTransactions();
     }
 
 
     @Override
     protected void onResume() {
-     
+
         super.onResume();
 
         callResume++;
@@ -290,6 +291,7 @@ public int callResume = 0;
             startActivity(newInt);
         }
     }
+
 
 
 
