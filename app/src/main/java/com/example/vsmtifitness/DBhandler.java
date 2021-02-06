@@ -15,7 +15,7 @@ import java.util.Date;
 public class DBhandler extends SQLiteOpenHelper{
     private final static String TAG = "SQL DBhelper Class"; // tag za debagiranje
     public static SQLiteDatabase db;
-    private Context dbContext;  // universal context item
+    private final Context dbContext;  // universal context item
 
     private static final int DATABASE_VERSION = 1;          //db broj verzije
     private static final String DATABASE_NAME = "fitness";  // ime baze
@@ -27,11 +27,11 @@ public class DBhandler extends SQLiteOpenHelper{
     public DBhandler(Context context){
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
         this.dbContext = context;
-        this.db = this.getWritableDatabase();
+        db = this.getWritableDatabase();
     }
     @Override
     public void onCreate(SQLiteDatabase db) {
-        this.db = db;
+        DBhandler.db = db;
         createUserTable(); // napravi tablicu korisnika
         createTestPerson(); // kreiraj testnu osobu
         createWorkoutTable(); // napravi tablicu vježbi
@@ -482,7 +482,8 @@ public class DBhandler extends SQLiteOpenHelper{
                 "Name TEXT NOT NULL, " +
                 "Calories INT NOT NULL, " +
                 "IS_MULTIPLIER INT NOT NULL," +
-                "USER_NAME TEXT NOT NULL);";
+                "USER_NAME TEXT NOT NULL," +
+                "RECORD_ID INTEGER PRIMARY KEY AUTOINCREMENT);";
         db.execSQL(CMD);
 
     }
@@ -540,6 +541,23 @@ public class DBhandler extends SQLiteOpenHelper{
         return theList;
     }
 
+    public static int[] returnTodaysRecordsID(String name, String date){
+        Log.d(TAG, "Return items from date " + date);
+        int[] theList;
+        String CMD = "SELECT * FROM " + TABLE_FITNESS_RECORD + " WHERE Date ='" + date + "' AND USER_NAME ='" + name + "';";
+        Cursor c = db.rawQuery(CMD, null);
+        if (c.getCount() <= 0){
+            return null;
+        }
+        c.moveToFirst();
+        theList = new int[c.getCount()];
+        for (int i = 0; !c.isAfterLast(); i++){
+            theList[i] = c.getInt(6);
+            c.moveToNext();
+        }
+        return theList;
+    }
+
 
     public static int returnMealPlan(String name){
 
@@ -561,7 +579,7 @@ if(name != null) {
 
     public static void deleteFromToday(String date, int ID){
         Log.d(TAG, "date passed " + date + "ID passed " + ID);
-        db.delete(TABLE_FITNESS_RECORD, "Workout_ID=" + ID + " AND Date='" + date + "'", null);
+        db.delete(TABLE_FITNESS_RECORD, "RECORD_ID=" + ID + " AND Date='" + date + "'", null);
     }
 
     public void destroyDB(){

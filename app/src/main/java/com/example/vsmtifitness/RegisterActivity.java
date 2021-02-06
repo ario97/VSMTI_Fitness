@@ -22,7 +22,7 @@ public class RegisterActivity extends AppCompatActivity {
     private TextView BMI, BMR;
     boolean calcComplete = false;
     static DBhandler dBhandler;
-    private int mealPlan = 0;
+    private final int mealPlan = 0;
 
 
 
@@ -30,20 +30,20 @@ public class RegisterActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         dBhandler = new DBhandler(this);
 
-        name = (EditText)findViewById(R.id.editTextUsername);
-        age = (EditText) findViewById(R.id.textAge);
-        password = (EditText) findViewById(R.id.editTextPassword);
-        email = (EditText) findViewById(R.id.editTextemail);
-        phone = (EditText) findViewById(R.id.editTextPhone);
-        weight = (EditText) findViewById(R.id.editTextWight);
-        height = (EditText) findViewById(R.id.editTextHeight);
-        BMI = (TextView) findViewById(R.id.textBMI);
-        BMR = (TextView) findViewById(R.id.textBMR);
+        name = findViewById(R.id.editTextUsername);
+        age = findViewById(R.id.textAge);
+        password = findViewById(R.id.editTextPassword);
+        email = findViewById(R.id.editTextemail);
+        phone = findViewById(R.id.editTextPhone);
+        weight = findViewById(R.id.editTextWight);
+        height = findViewById(R.id.editTextHeight);
+        BMI = findViewById(R.id.textBMI);
+        BMR = findViewById(R.id.textBMR);
 
         weight.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
@@ -90,9 +90,7 @@ public class RegisterActivity extends AppCompatActivity {
         });
     }
 
-    @Override
-    public void onBackPressed() {
-    }
+
 
     public void calculate(View view){
         Toast toast;

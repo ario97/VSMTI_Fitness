@@ -55,14 +55,14 @@ public class Today extends Fragment {
 
         super.onViewCreated(view, savedInstanceState);
         final String DateTime = DateFormat.getDateFormat(MainActivity.mContext).format(new Date());
-        date = (TextView) getView().findViewById(R.id.date);
-        mealPlan = (TextView) getView().findViewById(R.id.currentPlanText);
+        date = getView().findViewById(R.id.date);
+        mealPlan = getView().findViewById(R.id.currentPlanText);
         date.setText(DateTime);
-        list = (ListView) getView().findViewById(R.id.workList);
-        weight = (TextView)getView().findViewById(R.id.weight);
+        list = getView().findViewById(R.id.workList);
+        weight = getView().findViewById(R.id.weight);
         weight.setText(String.valueOf(MainActivity.user.getCur_weight()));
-        dailyCals = (TextView)getView().findViewById(R.id.calorieDisplay);
-        needCals = (TextView)getView().findViewById(R.id.DailyCaloriesText);
+        dailyCals = getView().findViewById(R.id.calorieDisplay);
+        needCals = getView().findViewById(R.id.DailyCaloriesText);
 
 
 
@@ -70,7 +70,8 @@ public class Today extends Fragment {
         MainActivity activity = (MainActivity) getActivity();
         String name = activity.sharedPreferences.getString("name", null);
 
-        final int workoutIDs[] = DBhandler.returnTodaysRecords(name, DateTime);
+        final int[] workoutIDs = DBhandler.returnTodaysRecords(name, DateTime);
+        final int[] workoutDeleteIDs = DBhandler.returnTodaysRecordsID(name, DateTime);
 
         if (workoutIDs != null) {
             float calorieCounter = 0;
@@ -132,7 +133,7 @@ public class Today extends Fragment {
 
 
              */
-            selectedPlan = activity.dBhandler.returnMealPlan(name);
+            selectedPlan = DBhandler.returnMealPlan(name);
             mealPlan.setText(String.valueOf(selectedPlan));
 
 
@@ -168,7 +169,7 @@ public class Today extends Fragment {
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {
                                     Log.d("pp", "position " + position);
-                                    DBhandler.deleteFromToday(DateTime, workoutIDs[position]);
+                                    DBhandler.deleteFromToday(DateTime, workoutDeleteIDs[position]);
                                     mListener.onFragmentInteraction(position);
                                 }
                             })
@@ -185,7 +186,7 @@ public class Today extends Fragment {
 
             float calorieCounter = 0;
 
-            selectedPlan = activity.dBhandler.returnMealPlan(name);
+            selectedPlan = DBhandler.returnMealPlan(name);
             mealPlan.setText(String.valueOf(selectedPlan));
 
             needCals.setText(String.format("%.0f", MainActivity.user.getCal_needs()  + calorieCounter  - selectedPlan));
@@ -193,7 +194,7 @@ public class Today extends Fragment {
             ((MainActivity) getActivity()).messageDaily = MainActivity.user.getCal_needs() +  calorieCounter  ;
 
         }
-        addWorkout = (Button) getView().findViewById(R.id.addWorkoutButton);
+        addWorkout = getView().findViewById(R.id.addWorkoutButton);
         addWorkout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -230,7 +231,7 @@ try{
         mListener = null;
     }
 
-    static interface OnFragmentInteractionListener {
-        public void onFragmentInteraction(int test);
+    interface OnFragmentInteractionListener {
+        void onFragmentInteraction(int test);
     }
 }
