@@ -51,7 +51,7 @@ public class AddWorkoutActivity extends AppCompatActivity {
         sharedPreferences = PreferenceManager
                 .getDefaultSharedPreferences(this);
         int name = sharedPreferences.getInt("_id", 0);
-        Log.i(Integer.toString(name), "TESTTTTTTTTTTTTTT");
+
 
         values.put("USER_ID", name );
         int idInserted = MainActivity.dBhandler.insertWorkout(values); // stavi podatke u bazu, vrati korišteni id

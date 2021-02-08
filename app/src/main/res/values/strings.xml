@@ -99,6 +99,8 @@
 
 
     <string name="logout">Logout</string>
+    <string name="__kg">kg</string>
+    <string name="kgspace">"  kg"</string>
 
 
 </resources>

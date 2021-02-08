@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import androidx.appcompat.widget.Toolbar;
 
+import android.text.method.ScrollingMovementMethod;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -53,19 +54,20 @@ public class BmiCalculator extends AppCompatActivity {
                 // pokazi rezultat
 
                 r.setText(bmiValue + "   " + bmiInterpretation);
+                r.setMovementMethod(new ScrollingMovementMethod());
             } catch (Exception e){}
         }
     }
 
 
     static float BMI (float weight, float height) {
-       // return (float) (weight * 4.88 / (height * height));
+
         return (float) ( ((weight / height / height )* 10000));
     }
 
     static float BMR (float weight, float height, float age){
-        //return (float) (66 + (6.23 * weight) + (12.7 * height) - ( 6.8 * age));
-        return (float) ( (10 * weight) + (6.25 * height) - (5 * age));
+
+        return (float) (  (10 * weight) + (6.25 * height) - (5 * age));
     }
 
     private String interpretBMI(float BmiResult) {

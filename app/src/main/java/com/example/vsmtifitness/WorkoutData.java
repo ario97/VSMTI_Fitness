@@ -39,9 +39,29 @@ public class WorkoutData {
             c.moveToNext();
         }
         Log.d("Workout Data Class", "List Filled");
-       Collections.reverse(theList);
        return theList;
     }
+
+    public static WorkoutData getWorkout(int id){
+
+
+
+
+        WorkoutData temp;
+        String query = "SELECT * FROM Workouts WHERE _ID = '" + id +"';";
+        Cursor c = DBhandler.db.rawQuery(query, null);
+        c.moveToFirst();
+        Log.d("Workout Data Class", "Starting to fill list");
+
+
+            temp = new WorkoutData(c.getInt(0), c.getString(1), c.getString(2), c.getFloat(3), c.getInt(4),c.getInt(5));
+
+
+
+
+        return temp;
+    }
+
 
     public WorkoutData(int id, String name, String description, float cal_count, int multiplier, int user_id) {
         this.ID = id;

@@ -113,16 +113,6 @@ public class Recipies extends Fragment {
 
 
 
-/*
-                   Bundle bundle = new Bundle();
-                   bundle.putInt("selectedPlan", selectedPlan);
-                   Today fragment = new Today();
-                   fragment.setArguments(bundle);
-
-                   getFragmentManager().beginTransaction().replace(R.id.mainFrame, fragment).commit();
-
-*/
-
                 }
 
             }

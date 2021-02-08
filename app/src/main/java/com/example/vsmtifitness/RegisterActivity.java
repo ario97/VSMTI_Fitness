@@ -136,7 +136,7 @@ public class RegisterActivity extends AppCompatActivity {
         }
 
         String username = name.getText().toString();
-Log.i(username, "nest3333333333333333333333333");
+
         int userDoesNotExist = dBhandler.checkUserLoginRegistration(username);
 
         if (userDoesNotExist == 0){
@@ -206,10 +206,11 @@ Log.i(username, "nest3333333333333333333333333");
         MainActivity.user.setBMI(Float.valueOf(BMI.getText().toString()));
         MainActivity.user.setBMR(Float.valueOf(BMR.getText().toString()));
 
-        MainActivity.user.setCal_needs(Float.valueOf(BMR.getText().toString()));
+
         MainActivity.user.setEmail(email.getText().toString());
         MainActivity.user.setPhone(phone.getText().toString());
         MainActivity.user.setMealPlan(mealPlan);
+        MainActivity.user.setAge(Float.valueOf(age.getText().toString()));
         MainActivity.user.commitUserToDB();
         finish();
     }

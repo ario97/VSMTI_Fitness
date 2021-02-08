@@ -9,16 +9,24 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import static java.lang.String.valueOf;
+
 
 public class WorkoutDetailFragment extends Fragment {
     private int workoutId;
-
+    private ArrayList<WorkoutData> namesData;
     public WorkoutDetailFragment() {
 
     }
 
-    public void setWorkout(long id) {
-        this.workoutId = (int) id;
+    public void setWorkout(long id, ArrayList<WorkoutData> names) {
+
+        this.workoutId = (int) id +1  ;
+
+        this.namesData = names;
     }
 
     @Override
@@ -26,6 +34,7 @@ public class WorkoutDetailFragment extends Fragment {
                              Bundle savedInstanceState) {
         if (savedInstanceState != null) {
             workoutId = (int) savedInstanceState.getLong("workoutId");
+
         }
 
         return inflater.inflate(R.layout.fragment_workout_detail, container, false);
@@ -40,39 +49,37 @@ public class WorkoutDetailFragment extends Fragment {
 
 
 
-            WorkoutActivity activity = (WorkoutActivity) getActivity();
-            int value_user_id = activity.getData();
+
+            WorkoutData workout = new WorkoutData(0,null, null, 0, 0, 0);
 
 
-            Log.i(String.valueOf(value_user_id), "today button hit...");
-            String[] namesCount = new String[WorkoutData.workouts.size()];
-            int counter = 0;
-            for (int i = 0; i < namesCount.length; i++) {
-                if (WorkoutData.workouts.get(i).getUser_id() == 0 || WorkoutData.workouts.get(i).getUser_id() == value_user_id) {
-                    counter++;
+
+
+
+
+           List<WorkoutData> workouts = WorkoutData.getWorkouts();
+            for (int i = 0; i < workouts.size(); i++) {
+
+
+                if (workouts.get(i).getID() == workoutId - 1) {
+workoutId = workoutId -1;
+
+                    workout = WorkoutData.getWorkout(workoutId);
+
+                    title.setText(workout.getName());
+                    TextView description = (TextView) view.findViewById(R.id.textDescription);
+                    description.setText(workout.getDescription());
+                    WorkoutActivity.workoutIDSelected = workout.getID();
+
+
                 }
             }
-            WorkoutData[] names = new WorkoutData[counter];
-            int counter2 = 0;
-            for (int i2 = 0; i2 < namesCount.length; i2++){
-                if(WorkoutData.workouts.get(i2).getUser_id() == 0 || WorkoutData.workouts.get(i2).getUser_id() == value_user_id) {
-                    names[counter2] = WorkoutData.workouts.get(i2);
-                    counter2++;
-                }
-            }
-
-
-            WorkoutData workout = names[workoutId];
-            title.setText(workout.getName());
-            TextView description = (TextView) view.findViewById(R.id.textDescription);
-            description.setText(workout.getDescription());
-            WorkoutActivity.workoutIDSelected = names[workoutId].getID();
-            WorkoutActivity.workoutPosition = workoutId;
         }
     }
 
     @Override
     public void onSaveInstanceState(Bundle savedInstanceState) {
         savedInstanceState.putLong("workoutId", workoutId);
+
     }
 }

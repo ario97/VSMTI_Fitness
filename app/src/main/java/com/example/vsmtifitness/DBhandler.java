@@ -55,11 +55,11 @@ public class DBhandler extends SQLiteOpenHelper{
                 "BMI FLOAT NOT NULL, " +
                 "BMR FLOAT NOT NULL, " +
                 "Starting_Weight FLOAT NOT NULL, " +
-                "Cal_Needs FLOAT NOT NULL, " +
                 "Cur_Weight FLOAT NOT NULL, " +
                 "Email TEXT, " +
                 "Phone TEXT," +
-                "MealPlan INTEGER);";
+                "MealPlan INTEGER," +
+                "Age FLOAT NOT NULL);";
 
         db.execSQL(CMD);
     }
@@ -76,11 +76,11 @@ public class DBhandler extends SQLiteOpenHelper{
         values.put("BMI", 31.32);
         values.put("BMR", 1949);
         values.put("Starting_Weight", 200);
-        values.put("Cal_Needs", 3021);
         values.put("Cur_Weight", 200);
         values.put("Email", "test@123.com");
         values.put("Phone", "123-222-2222");
         values.put("MealPlan", "0");
+        values.put("Age", "42");
 
         db.insert(TABLE_USER, null, values);
     }
@@ -95,12 +95,11 @@ public class DBhandler extends SQLiteOpenHelper{
         values.put("BMI", user.getBMI());
         values.put("BMR", user.getBMR());
         values.put("Starting_Weight", user.getWeight());
-        values.put("Cal_Needs", user.getCal_needs());
         values.put("Cur_Weight", user.getCur_weight());
         values.put("Email", user.getEmail());
         values.put("Phone", user.getPhone());
         values.put("MealPlan", user.getMealPlan());
-
+        values.put("Age", user.getAge());
         db.insert(TABLE_USER, null, values);
     }
 
@@ -122,13 +121,13 @@ public class DBhandler extends SQLiteOpenHelper{
         MainActivity.user.setBMR(c.getFloat(6));
         MainActivity.user.setStart_weight(c.getFloat(7));
 
-        MainActivity.user.setCal_needs(c.getFloat(8));
-        MainActivity.user.setCur_weight(c.getFloat(9));
 
-        MainActivity.user.setEmail(c.getString(10));
-        MainActivity.user.setPhone(c.getString(11));
-        MainActivity.user.setMealPlan(c.getInt(12));
+        MainActivity.user.setCur_weight(c.getFloat(8));
 
+        MainActivity.user.setEmail(c.getString(9));
+        MainActivity.user.setPhone(c.getString(10));
+        MainActivity.user.setMealPlan(c.getInt(11));
+        MainActivity.user.setAge(c.getInt(12));
         MainActivity.user.commitUserToPrefs();
         return 0;
     }
@@ -151,7 +150,7 @@ public class DBhandler extends SQLiteOpenHelper{
         values.put("Cur_Weight", weight);
         values.put("BMI", BMI);
         values.put("BMR", BMR);
-        values.put("Cal_Needs", BMR);
+
         db.update(TABLE_USER, values, "Name = '" + name + "'", null);
     }
 

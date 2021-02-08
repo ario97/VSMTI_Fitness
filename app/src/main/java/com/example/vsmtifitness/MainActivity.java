@@ -33,7 +33,7 @@ import com.google.android.material.navigation.NavigationView;
 
 
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener, MyFitness.OnFragmentInteractionListener,
+        implements NavigationView.OnNavigationItemSelectedListener,
         Today.OnFragmentInteractionListener{
 
     private final String TAG = "MainActivity"; // koristi ovaj tag za log akcija  u
@@ -80,7 +80,7 @@ public int callResume = 0;
         recipieFrag = new Recipies();
         // get database setup...
         dBhandler = new DBhandler(this);
-        //dBhandler.destroyDB();
+
 
 
 
@@ -200,17 +200,14 @@ public int callResume = 0;
         return true;
     }
 
-    @Override
-    public void onFragmentInteraction(Uri uri) {
 
-    }
     // metoda se aktivira pressom na change weight gumb u today fragmentu
     public void changeWeight(View view){
         Log.d(TAG, "change weight button hit from Today Fragment");
         final EditText weightInput = new EditText(this);
         weightInput.setInputType(InputType.TYPE_NUMBER_FLAG_DECIMAL);
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Change Current Weight");
+        builder.setTitle("Change Current Weight [kg]");
         builder.setView(weightInput);
         builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
             @Override
@@ -224,16 +221,16 @@ public int callResume = 0;
                     // promijeni weight u user, sharedPrefs i database
                     SharedPreferences.Editor editor = sharedPreferences.edit();
                     final float BMI = BmiCalculator.BMI(weight, MainActivity.user.getHeight());
-                    final double age = (66 + (6.23 * MainActivity.user.getCur_weight()) + (12.7 * MainActivity.user.getHeight() - MainActivity.user.getCal_needs()))/6.8;
-                    final float BMR = BmiCalculator.BMR(weight, MainActivity.user.getHeight(),(float) age);
+
+                    final float BMR = BmiCalculator.BMR(weight, MainActivity.user.getHeight(),MainActivity.user.getAge());
                     user.setCur_weight(weight); // postavi weight za main korisnika
                     user.setBMI(BMI);
                     user.setBMR(BMR);
-                    user.setCal_needs(BMR);
+
                     editor.putFloat("Current_Weight", weight);
                     editor.putFloat("BMI", BMI);
                     editor.putFloat("BMR", BMR);
-                    editor.putFloat("Cal_Needs", BMR);
+
                     editor.commit();
                     dBhandler.updateUserWeight(user.getName(), weight, BMI, BMR);
                     onFragmentInteraction(1); // zovi za restart fragmenta

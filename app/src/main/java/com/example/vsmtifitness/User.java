@@ -10,7 +10,7 @@ public class User {
     private final String TAG = "User Class Activity";
 
     private String name, password, email, phone;
-    private float weight, height, BMI, BMR, start_weight, cal_needs, cur_weight;
+    private float weight, height, BMI, BMR, start_weight, cal_needs, cur_weight, age;
     private int _id, mealPlan;
 
     private SharedPreferences sharedPreferences;
@@ -35,12 +35,13 @@ public class User {
         this.BMR = sharedPreferences.getFloat("BMR", 0);
         this.start_weight = sharedPreferences.getFloat("Starting_Weight", 0);
 
-        this.cal_needs = sharedPreferences.getFloat("Cal_Needs", 0);
+
         this.cur_weight = sharedPreferences.getFloat("Current_Weight", 0);
 
         this.email = sharedPreferences.getString("Email", null);
         this.phone = sharedPreferences.getString("Phone", null);
         this.mealPlan = sharedPreferences.getInt("MealPlan", 0);
+        this.age = sharedPreferences.getFloat("Age", 0);
     }
 
 
@@ -63,12 +64,13 @@ public class User {
         editor.putFloat("BMR", BMR = c.getFloat(6));
         editor.putFloat("Starting_Weight", start_weight = c.getFloat(7));
 
-        editor.putFloat("Cal_Needs", cal_needs = c.getFloat(8));
-        editor.putFloat("Current_Weight", cur_weight = c.getFloat(9));
 
-        editor.putString("Email", email = c.getString(10));
-        editor.putString("Phone", phone = c.getString(11));
-        editor.putInt("MealPlan", mealPlan = c.getInt(12));
+        editor.putFloat("Current_Weight", cur_weight = c.getFloat(8));
+
+        editor.putString("Email", email = c.getString(9));
+        editor.putString("Phone", phone = c.getString(10));
+        editor.putInt("MealPlan", mealPlan = c.getInt(11));
+        editor.putFloat("Age", age = c.getInt(12));
         // komitaj promjene u preferencijalne
         editor.commit();
     }
@@ -93,12 +95,13 @@ public class User {
         editor.putFloat("BMR", BMR);
         editor.putFloat("Starting_Weight", start_weight);
 
-        editor.putFloat("Cal_Needs", cal_needs);
+
         editor.putFloat("Current_Weight", cur_weight);
 
         editor.putString("Email", email);
         editor.putString("Phone", phone);
         editor.putInt("MealPlan", mealPlan);
+        editor.putFloat("Age", age);
         editor.commit();
     }
     public void setID(int id){this._id = id;}
@@ -137,9 +140,6 @@ public class User {
         this.start_weight = start_weight;
     }
 
-    public void setCal_needs(float cal_needs) {
-        this.cal_needs = cal_needs;
-    }
 
     public void setCur_weight(float cur_weight) {
         this.cur_weight = cur_weight;
@@ -147,6 +147,7 @@ public class User {
 
     public void setMealPlan(int mealPlan){this.mealPlan = mealPlan;}
 
+    public void setAge(float age){this.age = age;}
 
     public String getName() {
         return name;
@@ -182,15 +183,15 @@ public class User {
         return start_weight;
     }
 
-    public float getCal_needs() {
-        return cal_needs;
-    }
+
 
     public float getCur_weight() {
         return cur_weight;
     }
 
     public int getMealPlan(){return mealPlan;}
+
+    public float getAge(){return age;}
 
 
 }

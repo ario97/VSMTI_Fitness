@@ -17,6 +17,10 @@ import android.view.View;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.util.ArrayList;
+
+import static java.lang.String.valueOf;
+
 public class WorkoutActivity extends AppCompatActivity implements WorkoutListFragment.WorkoutListListener {
     private static final String TAG = "Workout Activity";
     static int workoutIDSelected;
@@ -43,8 +47,7 @@ public class WorkoutActivity extends AppCompatActivity implements WorkoutListFra
 
 
 
-        Log.i(String.valueOf(value_user_id_nest), "today button hit222222222222222222222222222222222222222222...");
-        Log.i(String.valueOf(value_user_name), "today button hit3333333333333333...");
+
 
 
 
@@ -65,11 +68,7 @@ public class WorkoutActivity extends AppCompatActivity implements WorkoutListFra
         Log.d(TAG, "FINISH");
     }
 
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data){
-        finish();
-        startActivity(getIntent());
-    }
+
 
     public void removeWorkout(View view){
         Log.d(TAG, "remove workout pressed");
@@ -77,13 +76,10 @@ public class WorkoutActivity extends AppCompatActivity implements WorkoutListFra
         if (details != null && details.isVisible()){
             new AlertDialog.Builder(this)
                     .setTitle("Confirm Delete")
-                    .setMessage("Are you sure you want to delete:\n" + WorkoutData.workouts.get(workoutPosition).getName())
                     .setPositiveButton("yes", new DialogInterface.OnClickListener(){
                         public void onClick(DialogInterface dialog, int which){
                             Log.d(TAG, "yes button selected");
                             MainActivity.dBhandler.deleteWorkout(workoutIDSelected);
-                            WorkoutData.workouts.remove(workoutPosition);
-
                             finish();
                             startActivity(getIntent());
                         }
@@ -102,21 +98,25 @@ public class WorkoutActivity extends AppCompatActivity implements WorkoutListFra
     public void scheduleWorkout(View view){
         Log.d(TAG, "schedule workout pressed");
         if (details != null && details.isVisible()) {
-            Log.i(String.valueOf(value_user_name), "today button hit3333333333333333...");
+
             MainActivity.dBhandler.addWorkoutToToday(value_user_name, workoutIDSelected);
         }
         else Toast.makeText(this, "Please Select and item to schedule", Toast.LENGTH_LONG).show();
     }
 
     @Override
-    public void itemClicked(long id) {
+    public void itemClicked(long id, ArrayList<WorkoutData> names) {
+
         details = new WorkoutDetailFragment();
         FragmentTransaction ft = fragmentManager.beginTransaction();
-        details.setWorkout(id);
+        details.setWorkout(id, names);
         ft.replace(R.id.fragment_container, details);
         ft.addToBackStack(null);
         ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
         ft.commit();
     }
+
+
+
 
 }

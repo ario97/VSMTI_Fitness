@@ -44,6 +44,17 @@
         android:layout_marginLeft="10dp"
         android:layout_below="@+id/line"
         android:layout_toEndOf="@+id/textWeight" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/kgspace"
+        android:id="@+id/textView66"
+        android:layout_below="@+id/line"
+        android:layout_toEndOf="@+id/weight"
+        android:layout_alignTop="@+id/weight"
+
+       />
 
     <Button
         android:layout_width="wrap_content"
@@ -51,7 +62,7 @@
         android:text="@string/change"
         android:id="@+id/changeWeightButton"
         android:layout_below="@+id/line"
-        android:layout_toEndOf="@+id/weight"
+        android:layout_toEndOf="@+id/textView66"
         android:layout_alignBottom="@+id/weight"
         android:textSize="8sp"
         android:layout_marginLeft="5dp"

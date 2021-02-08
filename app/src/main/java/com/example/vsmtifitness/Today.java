@@ -97,56 +97,16 @@ public class Today extends Fragment {
                 }
             }
 
-
-
-
-
-
-            /*
-            sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity().getApplicationContext());
-            selectedPlan = sharedPreferences.getInt("selectedPlan", 0);
-
-            String p = sharedPreferences.getString("name", null);
-
-
-
-
-            String p = sharedPreferences.getString("selectedPlanDate", null);
-
-
-                Bundle bundle = this.getArguments();
-                if (bundle != null) {
-                    selectedPlan = bundle.getInt("selectedPlan", 0);
-
-
-                    SharedPreferences.Editor editor = sharedPreferences.edit();
-
-
-                    editor.putInt("selectedPlan", selectedPlan);
-                    editor.commit();
-
-
-                    editor.putString("selectedPlanDate", DateTime);
-                    editor.commit();
-
-                }
-
-
-             */
             selectedPlan = DBhandler.returnMealPlan(name);
             mealPlan.setText(String.valueOf(selectedPlan));
 
 
             dailyCals.setText(String.format("%.0f", calorieCounter));
-            needCals.setText(String.format("%.0f", MainActivity.user.getCal_needs() +  calorieCounter - selectedPlan) );
-            if (MainActivity.user.getCal_needs() <= (calorieCounter + 100)) dailyCals.setTextColor(Color.GREEN);
-
-            else if (MainActivity.user.getCal_needs() <= (calorieCounter + 300)) dailyCals.setTextColor(Color.BLUE);
-
-            else dailyCals.setTextColor(Color.RED);
+            needCals.setText(String.format("%.0f", MainActivity.user.getBMR() +  calorieCounter - selectedPlan) );
 
 
-            ((MainActivity) getActivity()).messageDaily = MainActivity.user.getCal_needs() +  calorieCounter  ;
+
+            ((MainActivity) getActivity()).messageDaily = MainActivity.user.getBMR() +  calorieCounter  ;
 
 
             ArrayAdapter<String> itemsAdapter =
@@ -189,9 +149,9 @@ public class Today extends Fragment {
             selectedPlan = DBhandler.returnMealPlan(name);
             mealPlan.setText(String.valueOf(selectedPlan));
 
-            needCals.setText(String.format("%.0f", MainActivity.user.getCal_needs()  + calorieCounter  - selectedPlan));
+            needCals.setText(String.format("%.0f", MainActivity.user.getBMR()  + calorieCounter  - selectedPlan));
 
-            ((MainActivity) getActivity()).messageDaily = MainActivity.user.getCal_needs() +  calorieCounter  ;
+            ((MainActivity) getActivity()).messageDaily = MainActivity.user.getBMR() +  calorieCounter  ;
 
         }
         addWorkout = getView().findViewById(R.id.addWorkoutButton);
