@@ -192,7 +192,7 @@ names = new ArrayList();
         int counter2 = 0;
         for (int i2 = 0; i2 < namesCount.length; i2++){
             if(WorkoutData.workouts.get(i2).getUser_id() == 0  || WorkoutData.workouts.get(i2).getUser_id() == value_user_id ) {
-                if(WorkoutData.workouts.get(i2).getName().contains(s)){
+                if(WorkoutData.workouts.get(i2).getName().toLowerCase().contains(s) || (WorkoutData.workouts.get(i2).getName().contains(s) )){
                     names.add(WorkoutData.workouts.get(i2));
 
                     counter2++;

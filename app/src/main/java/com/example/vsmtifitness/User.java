@@ -45,35 +45,7 @@ public class User {
     }
 
 
-    public void buildDummy(SQLiteDatabase db){
-        // postavi upit za izvršavanje
-        String query = "SELECT * FROM Users;";
-        // postavi kursor da obavi upit
-        Cursor c = db.rawQuery(query, null);
-        // pomakni kursor na prvi red
-        c.moveToFirst();
-        // počisti preferencije
-        editor.clear();
-        // postavi preferencije i user elemente
-        editor.putInt("_id", _id = c.getInt(0));
-        editor.putString("name", name = c.getString(1));
-        editor.putString("password", password = c.getString(2));
-        editor.putFloat("weight", weight = c.getFloat(3));
-        editor.putFloat("height", height = c.getFloat(4));
-        editor.putFloat("BMI", BMI = c.getFloat(5));
-        editor.putFloat("BMR", BMR = c.getFloat(6));
-        editor.putFloat("Starting_Weight", start_weight = c.getFloat(7));
 
-
-        editor.putFloat("Current_Weight", cur_weight = c.getFloat(8));
-
-        editor.putString("Email", email = c.getString(9));
-        editor.putString("Phone", phone = c.getString(10));
-        editor.putInt("MealPlan", mealPlan = c.getInt(11));
-        editor.putFloat("Age", age = c.getInt(12));
-        // komitaj promjene u preferencijalne
-        editor.commit();
-    }
     // makni usera iz preferencijalnih
     public void logOut(){
         editor.clear().commit();
